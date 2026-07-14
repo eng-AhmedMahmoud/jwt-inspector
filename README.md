@@ -7,7 +7,7 @@
 
 A tiny, dependency-free, client-side tool to decode and inspect JSON Web Tokens.
 
-> Live demo: https://jwt-inspector-plum.vercel.app
+> Live demo: https://jwt.devya.dev
 
 ## The problem
 
