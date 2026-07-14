@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>jwt-inspector — decode &amp; inspect JWTs in your browser</title>
+  <meta
+    name="description"
+    content="Decode and inspect a JWT entirely in your browser. The token never leaves the page — 100% client-side, zero network calls."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">{ }</span>
+        <div class="brand-text">
+          <h1>jwt-inspector</h1>
+          <p class="tagline">Peek inside a JSON Web Token — safely, in your browser.</p>
+        </div>
+      </div>
+      <p class="privacy" role="note">
+        <span aria-hidden="true">🔒</span> 100% client-side — your token never leaves this browser.
+      </p>
+    </header>
+
+    <section class="panel input-panel" aria-labelledby="input-label">
+      <div class="panel-head">
+        <label id="input-label" for="token-input">Paste your JWT</label>
+        <div class="input-actions">
+          <button type="button" id="sample-btn" class="btn btn-ghost">Load sample</button>
+          <button type="button" id="clear-btn" class="btn btn-ghost">Clear</button>
+        </div>
+      </div>
+      <textarea
+        id="token-input"
+        class="token-input"
+        spellcheck="false"
+        autocomplete="off"
+        autocapitalize="off"
+        rows="4"
+        placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIn0.signature"
+        aria-describedby="privacy-note"
+      ></textarea>
+      <p id="privacy-note" class="hint">
+        No network requests are made. Decoding happens locally with plain JavaScript.
+      </p>
+      <p id="error-box" class="error" role="alert" hidden></p>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <div class="grid">
+        <!-- Header -->
+        <section class="panel segment" aria-labelledby="header-title">
+          <div class="panel-head">
+            <h2 id="header-title" class="segment-title">
+              <span class="dot dot-header" aria-hidden="true"></span> Header
+            </h2>
+            <button type="button" class="btn btn-copy" data-copy="header">Copy</button>
+          </div>
+          <pre class="json"><code id="header-json"></code></pre>
+        </section>
+
+        <!-- Payload -->
+        <section class="panel segment" aria-labelledby="payload-title">
+          <div class="panel-head">
+            <h2 id="payload-title" class="segment-title">
+              <span class="dot dot-payload" aria-hidden="true"></span> Payload
+            </h2>
+            <button type="button" class="btn btn-copy" data-copy="payload">Copy</button>
+          </div>
+          <pre class="json"><code id="payload-json"></code></pre>
+        </section>
+      </div>
+
+      <!-- Claims -->
+      <section class="panel" aria-labelledby="claims-title">
+        <div class="panel-head">
+          <h2 id="claims-title" class="segment-title">Claims</h2>
+          <span id="exp-badge" class="badge" hidden></span>
+        </div>
+        <div class="table-scroll">
+          <table class="claims-table">
+            <thead>
+              <tr>
+                <th scope="col">Claim</th>
+                <th scope="col">Value</th>
+              </tr>
+            </thead>
+            <tbody id="claims-body"></tbody>
+          </table>
+        </div>
+        <p id="no-claims" class="hint" hidden>No standard claims found in this payload.</p>
+      </section>
+
+      <!-- Signature -->
+      <section class="panel" aria-labelledby="sig-title">
+        <div class="panel-head">
+          <h2 id="sig-title" class="segment-title">
+            <span class="dot dot-sig" aria-hidden="true"></span> Signature
+          </h2>
+          <span id="alg-badge" class="badge badge-alg" hidden></span>
+        </div>
+        <pre class="json sig"><code id="signature-value"></code></pre>
+        <p class="note">
+          Signature is <strong>NOT verified</strong> — verifying requires the secret / public key,
+          which stays on your server.
+        </p>
+      </section>
+    </section>
+
+    <footer class="site-footer">
+      <p>
+        Built by
+        <a href="https://devya.dev" target="_blank" rel="noopener">Devya</a>
+        · <a href="https://devya.dev" target="_blank" rel="noopener">devya.dev</a>
+        · Open source (GPL-3.0) ·
+        <a
+          href="https://github.com/eng-AhmedMahmoud/jwt-inspector"
+          target="_blank"
+          rel="noopener"
+          >GitHub</a
+        >
+      </p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

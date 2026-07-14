@@ -1,0 +1,27 @@
+{
+  "name": "jwt-inspector",
+  "version": "0.1.0",
+  "description": "Decode and inspect a JWT entirely in your browser — the token never leaves the page. Dependency-free, zero build step.",
+  "license": "GPL-3.0-or-later",
+  "author": "Ahmed Mahmoud (Devya) <contact@devya.dev>",
+  "homepage": "https://devya.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eng-AhmedMahmoud/jwt-inspector.git"
+  },
+  "keywords": [
+    "jwt",
+    "json-web-token",
+    "decoder",
+    "jwt-decoder",
+    "auth",
+    "client-side",
+    "privacy",
+    "vanilla-js",
+    "no-dependencies",
+    "developer-tools"
+  ],
+  "scripts": {
+    "dev": "npx --yes serve ."
+  }
+}
