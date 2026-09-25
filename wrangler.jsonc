@@ -1,0 +1,12 @@
+// jwt.devya.dev as a static-assets Worker (no script — static requests are free
+// and uncapped). Moved off Vercel 2026-09-25. Deploy: `npx wrangler deploy`.
+// The default html_handling serves /page.html at /page, as Vercel's cleanUrls did.
+{
+  "name": "devya-jwt",
+  "compatibility_date": "2026-09-25",
+  "workers_dev": false,
+  // A zone route, not a custom domain: the existing DNS record stays and is
+  // switched to Proxied, so rollback is switching it back to DNS-only.
+  "routes": [{ "pattern": "jwt.devya.dev/*", "zone_name": "devya.dev" }],
+  "assets": { "directory": "." }
+}
